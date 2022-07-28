@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import DisplayBill from "../DisplayBill/DisplayBill";
 
 const BillForm = () => {
+  const [billData, setBillData] = useState([]);
+  const allBill = [];
   const handleSubmitBtn = (event) => {
     event.preventDefault();
     const date = event.target.date.value;
     const amount = event.target.amount.value;
     const payment = event.target.payment.value;
     const remark = event.target.remark.value;
-
-    console.log(date, amount, payment, remark);
+    const BillInfo = { date, amount, payment, remark };
+    allBill.push(...billData, BillInfo);
+    setBillData(allBill);
     event.target.reset();
   };
-  const handleCancelBtn = (event) => {
-    event.preventDefault();
-    event.target.reset();
+  console.log(billData);
+  const handleCancelBtn = () => {
+    setBillData([]);
   };
   return (
-    <div className="max-w-2xl mx-auto mt-24 p-8 bg-gray-200">
+    <div className="max-w-2xl mx-auto mt-16 p-8 bg-gray-200">
       <h2 className="underline text-2xl font-bold">Receipt Details</h2>
 
       <form onSubmit={handleSubmitBtn}>
@@ -68,13 +72,7 @@ const BillForm = () => {
           />
         </div>
 
-        <div className="flex justify-end gap-x-16 mt-8">
-          <button
-            onClick={() => handleCancelBtn}
-            className="btn bg-red-400 border-0 hover:bg-red-500"
-          >
-            Cancel
-          </button>
+        <div className="flex justify-end">
           <button
             onClick={() => handleSubmitBtn}
             className="btn bg-green-400 border-0 hover:bg-green-500"
@@ -83,6 +81,15 @@ const BillForm = () => {
           </button>
         </div>
       </form>
+      <div className="flex justify-end mt-2">
+        <button
+          onClick={() => handleCancelBtn([])}
+          className="btn bg-red-400 border-0 hover:bg-red-500"
+        >
+          Cancel
+        </button>
+      </div>
+      <DisplayBill billData={billData} />
     </div>
   );
 };
