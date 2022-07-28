@@ -21,7 +21,7 @@ const BillForm = () => {
   };
   return (
     <div className="max-w-2xl mx-auto mt-16 p-8 bg-gray-200">
-      <h2 className="underline text-2xl font-bold">Receipt Details</h2>
+      <h2 className="underline text-2xl font-bold mb-4">Receipt Details</h2>
 
       <form onSubmit={handleSubmitBtn}>
         <div className="flex flex-row justify-between gap-24 items-center mb-4">
