@@ -1,10 +1,10 @@
 import "./App.css";
+import BillForm from "./Components/BillForm/BillForm";
 
 function App() {
   return (
-    <div>
-      <h2 className="text-center text-red-600">hello</h2>
-      <button className="btn-primary">see</button>
+    <div className="max-w-screen-2xl mx-auto">
+      <BillForm />
     </div>
   );
 }
